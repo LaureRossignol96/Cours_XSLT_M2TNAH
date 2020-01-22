@@ -50,19 +50,26 @@
     
     <!-- question 5 -->
     <!-- 
-    <xsl:template match="tei:div/tei:lg">
+    <xsl:template match="tei:lg[1]">
         <xsl:copy-of select="."/>
     </xsl:template> -->
     
     <!-- question 6 -->
     <!-- 
-    <xsl:template match="tei:div/tei:lg[position()&lt;=2]">
+    <xsl:template match="tei:lg[position()&lt;2]">
         <xsl:copy-of select="."/>
     </xsl:template> -->
     
     <!-- question 7 -->
-    <xsl:template match="tei:div/tei:lg[position()&gt;=2]">
+    <!-- 
+    <xsl:template match="tei:lg[position()&gt;2]">
+        <xsl:copy-of select="."/>
+    </xsl:template> -->
+    
+    <!--  question 8 -->
+    <!-- (//l) veut dire n'importe quel enfant l du poeme pour que le prédicat porte sur toute l'expression //tei:l donc dans tout le fichier tei je veux le vers numéro 3 -->
+    <xsl:template match="(//tei:l)[3]">
         <xsl:copy-of select="."/>
     </xsl:template>
-    
+
 </xsl:stylesheet>
