@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader type="text">
+      <fileDesc>
+         <titleStmt>
+            <title>Mon rêve familier</title>
+            <author>Paul Verlaine</author>
+         </titleStmt>
+         <publicationStmt>
+            <p part="N">Encodage par moi-même</p>
+         </publicationStmt>
+         <sourceDesc default="false">
+            <p part="N">Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <lg n="1" type="sonnet">
+            <lg n="1.1" type="quatrain">
+               <l n="1">Je fais souvent ce rêve étrange et pénétrant</l>
+               <l n="2">D'une femme inconnue, et que j'aime, et qui m'aime</l>
+               <l n="3">Et qui n'est, chaque fois, ni tout à fait la même</l>
+               <l n="4">Ni tout à fait une autre, et m'aime et me comprend.</l>
+            </lg>
+            <lg n="1.2" type="quatrain">
+               <l n="5">Car elle me comprend, et mon coeur, transparent</l>
+               <l n="6">Pour elle seule, hélas ! cesse d'être un problème</l>
+               <l n="7">Pour elle seule, et les moiteurs de mon front blême,</l>
+               <l n="8">Elle seule les sait rafraîchir, en pleurant.</l>
+            </lg>
+            <lg n="1.3" type="sizain">
+               <lg n="1.3.1" type="tercet">
+                  <l n="9">Est-elle brune, blonde ou rousse ? - Je l'ignore.</l>
+                  <l n="10">Son nom ? Je me souviens qu'il est doux et sonore</l>
+                  <l n="11">Comme ceux des aimés que la Vie exila.</l>
+               </lg>
+               <lg n="1.3.2" type="tercet">
+                  <l n="12">Son regard est pareil au regard des statues,</l>
+                  <l n="13">Et, pour sa voix, lointaine, et calme, et grave, elle a</l>
+                  <l n="14">L'inflexion des voix chères qui se sont tues.</l>
+               </lg>
+            </lg>
+         </lg>
+      </body>
+   </text>
+</TEI>
