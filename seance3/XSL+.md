@@ -1,4 +1,4 @@
-# Séance 3 : Allez plus loin dans l’usage des règles de base
+x# Séance 3 : Allez plus loin dans l’usage des règles de base
 
 ---
 
@@ -12,7 +12,7 @@
 ---
 ## apply-templates et l'attribut mode
 
-« Parfois le même contenu en entrée doit apparaître plusieurs fois dans le document de sortie, formaté selon un modèle différent à chaque fois. [...] Les éléments *xsl:appy-templates* et *xsl:template* peuvent avoir un attribut mode optionnel qui associe différentes règles  à différents usages. L’attribut mode d’un élément *xsl:template* identifie dans quel mode cette règle-modèle doit être activée. Un élément *xsl:apply-template* avec un attribut mode n’active que la règle modèle avec l’attribut mode correspondant. »
+« Parfois le même contenu en entrée doit apparaître plusieurs fois dans le document de sortie, formaté selon un modèle différent à chaque fois. [...] Les éléments *xsl:apply-templates* et *xsl:template* peuvent avoir un attribut mode optionnel qui associe différentes règles  à différents usages. L’attribut mode d’un élément *xsl:template* identifie dans quel mode cette règle-modèle doit être activée. Un élément *xsl:apply-templates* avec un attribut mode n’active que la règle modèle avec l’attribut mode correspondant. »
 Elliotte Rusty Harold, W. Scott Means, Philippe Ensarguet[et al.], *XML en concentré*, Paris, O’Reilly, 2005, p. 171.
 
 ---
@@ -90,10 +90,9 @@ Transformer le fichier XML mon rêve familier en fichier HTML à afficher.
 
 1) Créer un nouveau fichier XSLT
 2) Définir le namespace tei par défaut dans votre Xpath.
-3) Paramétrer HTML comme format de sortie avec un encodage utf-8 à l’aide de xsl:output @method @encodage.
----
-
+3) Paramétrer HTML comme format de sortie avec un encodage utf-8 à l’aide de xsl:output @method @encoding.
 4) Créer une structure HTML d’accueil des données XML :
+---
 ```HTML
 <html>
   <head><meta charset="UTF-8"/>
@@ -113,11 +112,11 @@ Transformer le fichier XML mon rêve familier en fichier HTML à afficher.
   </body>
 </html>
 ```
+----
 
 - A- Ajouter dans h1 le titre du poeme, comprenant le contenu de la balise `<title>`, « écrit par », le contenu de la balise `author`.
 - B- Structurer votre poème à l’aide de `<ul>` pour les tercets et les quatrains et `<li>` pour les vers 
 ---
-
 5) Remplacer dans le titre « Mon » par « Un »
 6) Trouver un moyen de numéroter les vers dans le HTML pour que le numéro n’apparaisse qu’au passage de la souris. 
 7) Bonus : ajouter à la fin du poème, la ligne "Ce poème contient [x=nb de vers] vers", puis remplacer « poème » par la valeur de @type du lg qui contient l’intégralité du poème.
