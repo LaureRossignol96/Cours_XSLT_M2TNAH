@@ -4,13 +4,15 @@
     exclude-result-prefixes="xs"
     version="2.0"
     xmlns="http://www.tei-c.org/ns/1.0">
-    <xsl:output method="html" encoding="UTF-8"/>
+    <xsl:output method="html" encoding="UTF-8" indent="yes"/>
     
-    <!-- 
+ <!--
     <xsl:template match="TEI">
         <html>
             <head>
-                <meta charset="UTF-8"/>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+                <meta charset="UTF-8"></meta>
+                <title>Exercice de structuration HTML</title>
             </head>
             <body>
                 <h1>
@@ -34,8 +36,8 @@
 
  <xsl:template match="teiHeader">
      <xsl:copy-of select="."/>
- </xsl:template>
--->
+ </xsl:template>-->
+
     
     <xsl:template match="TEI">
         <html>
