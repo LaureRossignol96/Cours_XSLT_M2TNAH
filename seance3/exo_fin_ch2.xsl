@@ -10,7 +10,7 @@
     
     <!-- tout récupérer, mais inverser les lg saizain et quatrain -->
     
-    <xsl:template match="TEI">
+    <xsl:template match="TEI//l">
         <xsl:copy>
             <xsl:apply-templates/>
         </xsl:copy>

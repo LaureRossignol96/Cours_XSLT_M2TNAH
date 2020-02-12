@@ -33,8 +33,7 @@
         <xsl:variable name="titre">
             <!-- <xsl:variable name="titre" select="descendant::title/text()"/>
              <xsl:variable name="auteur" select="descendant::author/text()"/> -->
-            <xsl:value-of
-                select="concat(descendant::title/text(), ' ', 'écrit par', ' ', descendant::author/text())"/>
+            <xsl:value-of     select="concat(descendant::title/text(), ' ', 'écrit par', ' ', descendant::author/text())"/>
             <!-- <xsl:value-of select="concat($titre, ' écrit par ', $auteur)"/> -->
         </xsl:variable>
 

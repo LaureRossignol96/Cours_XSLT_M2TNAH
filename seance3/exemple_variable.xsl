@@ -10,5 +10,8 @@
     <xsl:variable name="titre">
         <xsl:value-of select="upper-case(.//head)"/>
     </xsl:variable>
+    <xsl:template match="head">
+        <xsl:value-of select="$titre"/>
+    </xsl:template>
     
 </xsl:stylesheet>
