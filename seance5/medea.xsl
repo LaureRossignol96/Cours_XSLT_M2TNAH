@@ -10,10 +10,17 @@
     <xsl:template match="TEI">
         <xsl:element name="TEI">
             <xsl:copy-of select="teiHeader"/>
-            <text>
             <xsl:apply-templates select="text"/>
-            </text>
         </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="text">
+        <xsl:copy>
+            <xsl:attribute name="n">
+                <xsl:value-of select="@n"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:copy>
     </xsl:template>
     
     <xsl:template match="body">
@@ -25,7 +32,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="div">
+    <xsl:template match="body/div">
         <xsl:copy>
             <xsl:apply-templates/>
         </xsl:copy>
@@ -37,23 +44,6 @@
     <xsl:template match="sp | @*">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
-        </xsl:copy>
-    </xsl:template>
-    
-    <xsl:template match="speaker">
-        <xsl:copy>
-      <xsl:if test="name[@type='person']">
-            <xsl:element name="persName">
-                <xsl:attribute name="ref">
-                    <xsl:value-of select=".//@ref"/>
-                </xsl:attribute>
-                <xsl:value-of select="."/>
-            </xsl:element>
-      </xsl:if>
-            <xsl:value-of select="."/>
-            <xsl:if test="contains(./text(), '.')">
-                <!-- finir ici l'étape 3 méthode 2 -->
-            </xsl:if>
         </xsl:copy>
     </xsl:template>
     
@@ -79,6 +69,34 @@
                 <xsl:number count="l" level="any" format="1"/>
             </xsl:attribute>
             <xsl:value-of select="."/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="name[@type='person']">
+        <xsl:element name="persName">
+            <xsl:attribute name="ref">
+                <xsl:value-of select=".//@ref"/>
+            </xsl:attribute>
+            <xsl:value-of select="."/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="speaker">
+        <!-- création d'une variable ref contenant la ref venant du sp[@who] parent, en supprimant le # -->
+        <xsl:variable name="ref">
+            <xsl:value-of select="parent::sp/replace(@who, '#', '')"/>
+        </xsl:variable>
+        <!-- création du speaker -->
+        <xsl:element name="speaker">
+            <!-- insertion d'un persName avec ref pour chaque speaker -->
+            <xsl:element name="persName">
+                <xsl:attribute name="ref">
+                    <xsl:value-of select="parent::sp/@who"/>
+                </xsl:attribute>
+                <!-- insertion de la valeur du who réconcilié avec le xml:id du teiHeader correspondant -->            <xsl:value-of select="ancestor::TEI//listPerson/person[@xml:id=$ref]/persName/text()"/>
+            </xsl:element>
+            <!-- application des règles pour name -->
+            <xsl:apply-templates select="name"/>
         </xsl:element>
     </xsl:template>
     
