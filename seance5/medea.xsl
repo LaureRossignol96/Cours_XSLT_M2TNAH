@@ -82,8 +82,8 @@
     </xsl:template>
     
     <xsl:template match="speaker">
-        <!-- création d'une variable ref contenant la ref venant du sp[@who] parent, en supprimant le # -->
-        <xsl:variable name="ref">
+        <!-- création d'une variable reference contenant la ref venant du sp[@who] parent, en supprimant le # -->
+        <xsl:variable name="reference">
             <xsl:value-of select="parent::sp/replace(@who, '#', '')"/>
         </xsl:variable>
         <!-- création du speaker -->
@@ -93,7 +93,8 @@
                 <xsl:attribute name="ref">
                     <xsl:value-of select="parent::sp/@who"/>
                 </xsl:attribute>
-                <!-- insertion de la valeur du who réconcilié avec le xml:id du teiHeader correspondant -->            <xsl:value-of select="ancestor::TEI//listPerson/person[@xml:id=$ref]/persName/text()"/>
+                <!-- insertion de la valeur du who réconcilié avec le xml:id du teiHeader correspondant -->            
+                <xsl:value-of select="ancestor::TEI//listPerson/person[@xml:id=$reference]/persName/text()"/>
             </xsl:element>
             <!-- application des règles pour name -->
             <xsl:apply-templates select="name"/>
