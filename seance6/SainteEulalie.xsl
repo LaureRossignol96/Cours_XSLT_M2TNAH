@@ -22,7 +22,7 @@
                 </span> 
                 <div>
                     <ul>
-                        <li>Liste des personnages</li>
+                        <head>Liste des personnages</head>
                         <xsl:apply-templates select=".//listPerson"/>
                     </ul>
                 </div>
@@ -39,6 +39,12 @@
                     <div>
                         <ul><xsl:apply-templates select="//text//div" mode="reg"/></ul>
                     </div>
+                </div>
+                <div>
+                    <head>Index des noms propres.</head>
+                    <ul>
+                        <xsl:call-template name="index"/>
+                    </ul>
                 </div>
             </body>
         </html>
@@ -73,6 +79,17 @@
                         <xsl:value-of select="text() | .//reg/text() | .//expan/text()"/>
                     </xsl:for-each>
             </li>
+    </xsl:template>
+    
+    <xsl:template name="index">
+        <xsl:for-each select="//listPerson/person/persName"> 
+            <li>
+            <xsl:value-of select="."/>
+            <xsl:if test="persName/@ref">
+                <xsl:value-of select="@ref"/>
+            </xsl:if>
+            </li>
+        </xsl:for-each>
     </xsl:template>
     
 </xsl:stylesheet>
