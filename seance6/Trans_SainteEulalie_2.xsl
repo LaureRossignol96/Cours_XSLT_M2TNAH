@@ -16,10 +16,15 @@
                 </title>
             </head>
             <body>
-                <h1><xsl:value-of select="//body/head"/></h1>
+                <h2><xsl:value-of select="//body/head"/></h2>
                 <span>
                     <a href="{//pb/@facs}">lien vers le manuscrit</a>
-                </span>        
+                </span>
+                <div>
+                    <!--
+                    <head>Index des noms propres</head>
+                    <ul><xsl:call-template name="index"/></ul> -->
+                </div>        
                 <div>
                     <h2>Transcription facsimilaire</h2>
                     <div>
@@ -36,18 +41,19 @@
                 </div>
                 <div>
                     <h2>Index</h2>
-                    <ul><xsl:apply-templates select=".//listPerson"/></ul>
+                    
+                    <ul><xsl:call-template name="index"></xsl:call-template></ul>
                 </div>
             </body>
         </html>
     </xsl:template>
-   
+    
     <xsl:template match="l" mode="#all">
         <xsl:element name="li">
             <xsl:attribute name="n">
                 <xsl:number count="." format="1"/>
             </xsl:attribute>
-       <xsl:apply-templates mode="#current"/>
+            <xsl:apply-templates mode="#current"/>
         </xsl:element>
     </xsl:template>
     
@@ -60,16 +66,17 @@
         <xsl:value-of select=".//reg/text() |
             .//expan//text()"/>
     </xsl:template>
-    
+    <!--
     <xsl:template match="person">
         <xsl:variable name="idPerson">
             <xsl:value-of select="@xml:id"/>
         </xsl:variable>
         <li><xsl:value-of select="concat(persName, ' : ')"/>
-            <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPesrson]">
+            <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPerson]">
                 <xsl:value-of select="text() |
                     .//reg/text() |
                     .//expan//text()"/>
+                
                 <xsl:text> (v.</xsl:text>
                 <xsl:value-of select="count(parent::l/preceding-sibling::l) + 1"/>
                 <xsl:text>)</xsl:text>
@@ -78,35 +85,28 @@
             </xsl:for-each>
         </li>
     </xsl:template>
-    
-   
-    <!--
-    <xsl:template match="l" mode="orig">
-        <xsl:element name="li">
-            <xsl:attribute name="n">
-                <xsl:number count="." format="1"/>
-            </xsl:attribute>
-            <xsl:value-of select="text() |
-                .//orig/text() |
-                .//abbr/text()|
-                persName/text()|
-                persName//orig/text() |
-                persName//abbr/text()"/> --> <!-- Utiliser text() permet d'éviter les espaces entres balises -->
-    <!--    </xsl:element>
-        </xsl:template>-->
-    
-   <!-- 
-    <xsl:template match="l" mode="reg">
-        <xsl:element name="li">
-        <xsl:attribute name="n">
-            <xsl:number count="." format="1"/>
-        </xsl:attribute><xsl:value-of select="text() |
-            .//reg/text() |
-            .//expan//text()|
-            persName/text()|
-            persName//reg/text() |
-            persName//expan//text()"/> --> <!-- Utiliser text() permet d'éviter les espaces entres balises -->
-      <!--  </xsl:element>
-    </xsl:template>
     -->
+    
+    <xsl:template name="index">
+        <xsl:for-each select="//listPerson//persName">
+            <li>
+            <xsl:value-of select="."/>
+             <xsl:variable name="idPerson">
+                 <xsl:value-of select="parent::person/@xml:id"/>
+             </xsl:variable>
+            <xsl:text> : </xsl:text>
+           <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPerson]">
+               <xsl:value-of select="text() |
+                   .//reg/text() |
+                   .//expan//text()"/>
+               <xsl:text> (v.</xsl:text>
+               <xsl:value-of select="count(parent::l/preceding-sibling::l) + 1"/>
+               <xsl:text>)</xsl:text>
+               <xsl:if test="position()!= last()">, </xsl:if>
+               <xsl:if test="position() = last()">.</xsl:if>
+           </xsl:for-each>
+            </li>
+        </xsl:for-each>
+    </xsl:template>
+   
 </xsl:stylesheet>
