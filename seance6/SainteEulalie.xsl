@@ -87,4 +87,23 @@
     
     <!--  call template permet de s'affranchir de la structure xml, à utiliser surtout quand y a des for each, ou quand on est perdu dans le match d'un template; permet d'écrire une xsl modulaire-->
     
+    <!-- attention dans le devoir, l'utilisation abusive de for-each est sanctionnée -->
+    
+    <!-- pour les différentes sorties, faire du nommage automatique de fichier -->
+    
+    <xsl:template match="/">
+        <!-- récupérer le nom du fichier courant -->
+        <xsl:variable name="witfile">
+            <xsl:value-of select="replace(base-uri(.), 'xml', '')"/>
+        </xsl:variable>
+        <!-- puis pour chaque page que l'on veut créer -->
+        <xsl:variable name="index">
+            <xsl:value-of select="concat($witfile, 'index', 'html')"/>
+        </xsl:variable>
+        <!-- utilisation des result document -->
+        <xsl:result-document href="{$index}" method='html' indent='yes'>
+            <!-- mettre ici ma structure html; on peut aussi la stocker dans une variable pour ne pas sans cesse la répéter -->
+        </xsl:result-document>
+    </xsl:template>
+    
 </xsl:stylesheet>
