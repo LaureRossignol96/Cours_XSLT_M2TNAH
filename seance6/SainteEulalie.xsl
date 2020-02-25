@@ -23,7 +23,7 @@
                 <div>
                     <ul>
                         <head>Liste des personnages</head>
-                        <xsl:apply-templates select=".//listPerson"/>
+                        <xsl:call-template name="index"/>
                     </ul>
                 </div>
                 <div>
@@ -63,15 +63,18 @@
             .//expan//text()"/>
     </xsl:template>
     
-    <xsl:template match="person">
+    <xsl:template name="index">
+        <xsl:for-each select="//listPerson//persName">
                 <li>
-                <xsl:value-of select="concat(persName/text(), ': ')"/>
+                <xsl:value-of select="."/>
                     <xsl:variable name="personne">
-                        <xsl:value-of select="@xml:id"/>
+                        <xsl:value-of select="parent::person/@xml:id"/>
                     </xsl:variable>
+                    <xsl:text> : </xsl:text>
                     <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#', '')=$personne]">
                         <xsl:value-of select="text() | .//reg/text() | .//expan/text()"/>
                         <xsl:text>(v.</xsl:text>
+                        <!-- je compte les frères précédents et je fais +1 pour arriver à mon vers; aussi utilisé pour faire des notes numérotées automatiquement dans le html; ici je part du parent, je récupère tous les frères et soeurs et moi-même -->
                         <xsl:value-of select="count(parent::l/preceding-sibling::l) + 1"/>
                         <xsl:text>)</xsl:text>
                         <!-- gestion des virgules ou des points de fin de ligne -->
@@ -79,6 +82,9 @@
                         <xsl:if test="position() = last()">.</xsl:if>
                     </xsl:for-each>
             </li>
+        </xsl:for-each>
     </xsl:template>
+    
+    <!--  call template permet de s'affranchir de la structure xml, à utiliser surtout quand y a des for each, ou quand on est perdu dans le match d'un template; permet d'écrire une xsl modulaire-->
     
 </xsl:stylesheet>
