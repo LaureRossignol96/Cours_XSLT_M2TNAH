@@ -40,12 +40,6 @@
                         <ul><xsl:apply-templates select="//text//div" mode="reg"/></ul>
                     </div>
                 </div>
-                <div>
-                    <head>Index des noms propres.</head>
-                    <ul>
-                        <xsl:call-template name="index"/>
-                    </ul>
-                </div>
             </body>
         </html>
     </xsl:template>
@@ -77,19 +71,14 @@
                     </xsl:variable>
                     <xsl:for-each select="ancestor::TEI//body//persName[replace(@ref, '#', '')=$personne]">
                         <xsl:value-of select="text() | .//reg/text() | .//expan/text()"/>
+                        <xsl:text>(v.</xsl:text>
+                        <xsl:value-of select="count(parent::l/preceding-sibling::l) + 1"/>
+                        <xsl:text>)</xsl:text>
+                        <!-- gestion des virgules ou des points de fin de ligne -->
+                        <xsl:if test="position() != last()">, </xsl:if>
+                        <xsl:if test="position() = last()">.</xsl:if>
                     </xsl:for-each>
             </li>
-    </xsl:template>
-    
-    <xsl:template name="index">
-        <xsl:for-each select="//listPerson/person/persName"> 
-            <li>
-            <xsl:value-of select="."/>
-            <xsl:if test="persName/@ref">
-                <xsl:value-of select="@ref"/>
-            </xsl:if>
-            </li>
-        </xsl:for-each>
     </xsl:template>
     
 </xsl:stylesheet>
