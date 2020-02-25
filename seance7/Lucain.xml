@@ -108,7 +108,7 @@
             <l n="187">clara per obscuram uoltu maestissima noctem,</l>
             <l n="188">turrigero canos effundens uertice crines,</l>
             <l n="189">caesarie lacera nudisque adstare lacertis</l>
-            <l n="190">et gemitu permixta loqui : « Quo tenditis <app>
+            <l n="190">et gemitu permixta loqui : " Quo tenditis <app>
                   <lem>ultra</lem>
                   <rdg wit="#p">ultro</rdg>
                   <rdg wit="#m">uel inquit</rdg>
@@ -117,7 +117,7 @@
                   <lem>uiri</lem>
                   <rdg wit="#Z">ueri*</rdg>
                </app>? Si iure uenitis,</l>
-            <l n="192">si ciues, huc usque licet. » <app>
+            <l n="192">si ciues, huc usque licet. " <app>
                   <lem wit="#Z #U">Tunc</lem>
                   <rdg wit="#M #A #B #C #E #F #G #S #Q #P #V #L">tum</rdg>
                </app> perculit horror</l>
@@ -126,9 +126,9 @@
                   <rdg wit="#S">gressusque</rdg>
                </app> cohercens,</l>
             <l n="194">Mox <app>
-                  <lem>ait</lem>
-                  <rdg wit="#Z1">agit</rdg>
-               </app> :« O magnae qui moenia prospicis Vrbis</l>
+                  <lem>ait </lem>
+                  <rdg wit="#Z1">agit </rdg>
+               </app>:" O magnae qui moenia prospicis Vrbis</l>
             <l n="195">Tarpeia de rupe, Tonans, Phrygiique penates</l>
             <l n="196">gentis <app>
                   <lem>Iuleae</lem>
@@ -146,7 +146,7 @@
             <l n="199">Roma, faue coeptis; non te furialibus armis</l>
             <l n="201">persequor ; en adsum, uictor terraque marique,</l>
             <l n="202">Caesar, uhique tuus (liceat modo, nunc quoque), miles,</l>
-            <l n="203">Ille erit, ille nocens, qui me tibi fecerit hostem. »</l>
+            <l n="203">Ille erit, ille nocens, qui me tibi fecerit hostem. "</l>
             <l n="204"> Inde moras soluit belli tumidumque per amnem</l>
             <l n="205">signat tulit propere ; <app>
                   <lem>sicut</lem>
@@ -155,7 +155,7 @@
             <l n="206"><app>
                   <lem>aestiferae</lem>
                   <rdg wit="#C">astriferae</rdg>
-               </app>&#160;<app>
+               </app> <app>
                   <lem>Libyes uiso</lem>
                   <rdg wit="#IS">libiae uisus</rdg>
                </app> leo <app>
